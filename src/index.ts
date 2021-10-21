@@ -162,6 +162,7 @@ export class TypeScriptPlugin {
 
     const emitedFiles = await typescript.run(this.rootFileNames, tsconfig)
     this.serverless.cli.log('Typescript compiled.')
+    await this.serverless.pluginManager.spawn('offline:reload')
     return emitedFiles
   }
 
